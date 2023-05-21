@@ -1,8 +1,5 @@
 Config = {
 
-    UseESX = true,
-    ESXTrigg = "esx:getSharedObject",
-
     UseOpenKey = true,
     OpenKey = "F3",
 
@@ -34,18 +31,3 @@ Config = {
     }
 
 }
-
-if Config.UseESX == true then 
-    if IsDuplicityVersion() then 
-        ESX = nil
-        TriggerEvent(Config.ESXTrigg, function(obj) ESX = obj end)
-    else
-        ESX = nil
-        Citizen.CreateThread(function()
-            while ESX == nil do
-                TriggerEvent(Config.ESXTrigg, function(obj) ESX = obj end)
-                Citizen.Wait(0)
-            end
-        end)
-    end
-end
